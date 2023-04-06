@@ -128,6 +128,19 @@ public class Consumer {
 
     @Override
     public String toString() {
-        return ToStringBuilder.reflectionToString(this);
+        return "Consumer{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", sex=" + sex +
+                ", phoneNum='" + phoneNum + '\'' +
+                ", email='" + email + '\'' +
+                ", birth=" + birth +
+                ", introduction='" + introduction + '\'' +
+                ", location='" + location + '\'' +
+                ", avator='" + avator + '\'' +
+                ", createTime=" + createTime +
+                ", updateTime=" + updateTime +
+                '}';
     }
 }

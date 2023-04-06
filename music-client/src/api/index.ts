@@ -5,14 +5,14 @@ const HttpManager = {
   attachImageUrl: (url) => url ? `${getBaseURL()}/${url}` : "https://cube.elemecdn.com/e/fd/0fc7d20532fdaf769a25683617711png.png",
   // =======================> 用户 API
   // 登录
-  signIn: (params) => post(`user/login/status`, params),
+  signIn: (params) => post(`user/login/status`, params),//完成
   // 注册
-  SignUp: (params) => post(`user/add`, params),
+  SignUp: (params) => post(`user/add`, params),//完成
   // 删除用户
-  deleteUser: (id) => get(`user/delete?id=${id}`),
+  deleteUser: (id) => get(`user/delete?id=${id}`),//完成
   // 更新用户信息
-  updateUserMsg: (params) => post(`user/update`, params),
-  updateUserPassword: (params) => post(`user/updatePassword`, params),
+  updateUserMsg: (params) => post(`user/update`, params),//完成
+  updateUserPassword: (params) => post(`user/updatePassword`, params),//完成
   // 返回指定ID的用户
   getUserOfId: (id) => get(`user/detail?id=${id}`),
   // 更新用户头像
@@ -20,19 +20,19 @@ const HttpManager = {
 
   // =======================> 歌单 API
   // 获取全部歌单
-  getSongList: () => get("songList"),
+  getSongList: () => get("songList"),//完成
   // 获取歌单类型
-  getSongListOfStyle: (style) => get(`songList/style/detail?style=${style}`),
+  getSongListOfStyle: (style) => get(`songList/style/detail?style=${style}`),//完成
   // 返回标题包含文字的歌单
   getSongListOfLikeTitle: (keywords) => get(`songList/likeTitle/detail?title=${keywords}`),
   // 返回歌单里指定歌单ID的歌曲
-  getListSongOfSongId: (songListId) => get(`listSong/detail?songListId=${songListId}`),
+  getListSongOfSongId: (songListId) => get(`listSong/detail?songListId=${songListId}`),//完成
 
   // =======================> 歌手 API
   // 返回所有歌手
-  getAllSinger: () => get("singer"),
+  getAllSinger: () => get("singer"),//完成 
   // 通过性别对歌手分类
-  getSingerOfSex: (sex) => get(`singer/sex/detail?sex=${sex}`),
+  getSingerOfSex: (sex) => get(`singer/sex/detail?sex=${sex}`),//完成 
 
   // =======================> 收藏 API
   // 返回的指定用户ID的收藏列表
@@ -54,12 +54,12 @@ const HttpManager = {
 
   // =======================> 评论 API
   // 添加评论
-  setComment: (params) => post(`comment/add`, params),
+  setComment: (params) => post(`comment/add`, params),//完成 
   // 删除评论
-  deleteComment: (id) => get(`comment/delete?id=${id}`),
+  deleteComment: (id) => get(`comment/delete?id=${id}`),//完成
   // 点赞
-  setSupport: (params) => post(`comment/like`, params),
-  // 返回所有评论
+  setSupport: (params) => post(`comment/like`, params),//完成 
+  // 返回所有评论                                     //完成 
   getAllComment: (type, id) => {
     let url = "";
     if (type === 1) {
@@ -72,9 +72,9 @@ const HttpManager = {
 
   // =======================> 歌曲 API
   // 返回指定歌曲ID的歌曲
-  getSongOfId: (id) => get(`song/detail?id=${id}`),
+  getSongOfId: (id) => get(`song/detail?id=${id}`),//完成
   // 返回指定歌手ID的歌曲
-  getSongOfSingerId: (id) => get(`song/singer/detail?singerId=${id}`),
+  getSongOfSingerId: (id) => get(`song/singer/detail?singerId=${id}`),//完成
   // 返回指定歌手名的歌曲
   getSongOfSingerName: (keywords) => get(`song/singerName/detail?name=${keywords}`),
   // 下载音乐

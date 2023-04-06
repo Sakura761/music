@@ -68,8 +68,8 @@ export default defineComponent({
       const params = new URLSearchParams();
       params.append("id", userId.value);
       params.append("username", username.value);
-      params.append("old_password", form.oldPassword);
-      params.append("password", form.newPassword);
+      params.append("old_password", form.oldPassword.trim());
+      params.append("password", form.newPassword.trim());
 
       const result = (await HttpManager.updateUserPassword(params)) as ResponseBody;
       (proxy as any).$message({

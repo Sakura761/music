@@ -50,14 +50,13 @@ export default defineComponent({
       const params = new URLSearchParams();
       params.append("username", registerForm.username);
       params.append("password", registerForm.password);
-
       try {
-        const result = (await HttpManager.signIn(params)) as ResponseBody;
+        const result = (await HttpManager.signIn(registerForm)) as ResponseBody;
         (proxy as any).$message({
           message: result.message,
           type: result.type,
         });
-
+        console.log(result.data);
         if (result.success) {
           proxy.$store.commit("setUserId", result.data[0].id);
           proxy.$store.commit("setUsername", result.data[0].username);

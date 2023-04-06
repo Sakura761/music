@@ -100,6 +100,7 @@ export default defineComponent({
       params.append("userId", userId.value);
       params.append("type", "0"); // 0 代表歌曲， 1 代表歌单
       params.append("songId", id);
+      
 
       const result = (await HttpManager.deleteCollection(params)) as ResponseBody;
       (proxy as any).$message({

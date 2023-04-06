@@ -71,6 +71,7 @@ export default defineComponent({
     });
 
     async function handleSignUp() {
+      console.log(registerForm);
       let canRun = true;
       (proxy.$refs["signUpForm"] as any).validate((valid) => {
         if (!valid) return (canRun = false);
@@ -78,17 +79,17 @@ export default defineComponent({
       if (!canRun) return;
 
       const params = new URLSearchParams();
-      params.append("username", registerForm.username);
-      params.append("password", registerForm.password);
+      params.append("username", registerForm.username.trim());
+      params.append("password", registerForm.password.trim());
       params.append("sex", registerForm.sex);
-      params.append("phone_num", registerForm.phoneNum);
+      params.append("phoneNum", registerForm.phoneNum.trim());
       params.append("email", registerForm.email);
       params.append("birth", getBirth(registerForm.birth));
-      params.append("introduction", registerForm.introduction);
+      params.append("introduction", registerForm.introduction.trim());
       params.append("location", registerForm.location);
 
       try {
-        const result = (await HttpManager.SignUp(params)) as ResponseBody;
+        const result = (await HttpManager.SignUp(registerForm)) as ResponseBody;
         (proxy as any).$message({
           message: result.message,
           type: result.type,

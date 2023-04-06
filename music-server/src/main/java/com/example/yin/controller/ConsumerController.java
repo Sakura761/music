@@ -47,28 +47,29 @@ public class ConsumerController {
     @ResponseBody
     @RequestMapping(value = "/user/add", method = RequestMethod.POST)
     public Object addUser(HttpServletRequest req) {
+        System.out.println(1);
         String username = req.getParameter("username").trim();
         String password = req.getParameter("password").trim();
         String sex = req.getParameter("sex").trim();
-        String phone_num = req.getParameter("phone_num").trim();
+        String phone_num = req.getParameter("phoneNum").trim();
         String email = req.getParameter("email").trim();
         String birth = req.getParameter("birth").trim();
+        System.out.println(birth);
         String introduction = req.getParameter("introduction").trim();
         String location = req.getParameter("location").trim();
         String avator = "/img/avatorImages/user.jpg";
-
-        if(consumerService.existUser(username)) {
-            return new WarningMessage("用户名已注册").getMessage();
-        }
-
-        Consumer consumer = new Consumer();
         DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         Date myBirth = new Date();
         try {
             myBirth = dateFormat.parse(birth);
+            System.out.println(myBirth);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+        Consumer consumer = new Consumer();
+
         consumer.setUsername(username);
         consumer.setPassword(password);
         consumer.setSex(new Byte(sex));
@@ -89,7 +90,10 @@ public class ConsumerController {
         consumer.setAvator(avator);
         consumer.setCreateTime(new Date());
         consumer.setUpdateTime(new Date());
-
+        System.out.println(consumer);
+        if(consumerService.existUser(username)) {
+            return new WarningMessage("用户名已注册").getMessage();
+        }
         try {
             boolean res = consumerService.addUser(consumer);
             if (res) {
